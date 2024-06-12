@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - SKIN.04</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFINITE GAMER</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .header-image {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: #ffeb3b;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .input-data {
+            margin-bottom: 20px;
+        }
+
+        .input-data input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #3a3a3a;
+            color: white;
+            transition: border-color 0.3s;
+        }
+
+        .input-data input:focus {
+            border-color: #ffeb3b;
+            outline: none;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+
+        .title-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .product-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: #444;
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card.selected {
+            box-shadow: 0 0 10px 2px #ffeb3b;
+        }
+
+        .product-card .product-image {
+            position: relative;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: filter 0.3s;
+        }
+
+        .product-card:hover img {
+            filter: brightness(1.2);
+        }
+
+        .product-info {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+        }
+
+        .product-info p {
+            margin: 5px 0;
+        }
+
+        .payment-selection {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .payment-option img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .payment-option:hover, .payment-option.selected {
+            background-color: #ffcc00;
+            color: #000;
+        }
+        .payment-selection {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+            padding: 10px;
+            background-color: #444;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .payment-option img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .payment-option.selected {
+            background-color: #ffeb3b;
+            border-color: #ffeb3b;
+            color: black;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #ffeb3b;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ffc107;
+        }
+
+        @media screen and (max-width: 768px) {
+            .product-selection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .order-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .payment-selection {
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://i.ibb.co/kMwt044/infinitelogomlb.jpg" alt="Header Image" class="header-image">
+            <h1>INFINITE GAMER</h1>
+        </header>
+        <div class="input-data">
+            <input type="text" id="userId" placeholder="Input User ID">
+            <input type="text" id="zoneId" placeholder="Input Zone ID">
+            <p>Please enter your User ID & Server and make sure it is correct. Example: 12345678(1234).</p>
+        </div>
+        <div class="section-title">
+            <h2>JJK GIFTING - NO DELAY</h2>
+        </div>
+        <div class="product-selection">
+            <div class="product-card" onclick="selectProduct(this)">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/YbcwXR3/gojo.jpg" alt="Product Image">
+                    <div class="product-info">
+                        <p>Satoru Gojo</p> <p>XAVIER</p>
+                        <p>INR 4500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" onclick="selectProduct(this)">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/xmc6hby/itadori.jpg" alt="Product Image">
+                    <div class="product-info">
+                        <p>Yuji Itadori</p> <p>YIN</p>
+                        <p>INR 4500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" onclick="selectProduct(this)">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/SQ6XSB7/fuzi.jpg" alt="Product Image">
+                    <div class="product-info">
+                        <p>Megumi Fushiguro</p> <p>JULIAN</p>
+                        <p>INR 4500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" onclick="selectProduct(this)">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/6WYkHq6/nobara.jpg" alt="Product Image">
+                    <div class="product-info">
+                        <p>Nobara Kugisaki</p> <p>MELISSA</p>
+                        <p>INR 4500</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-title">
+            <h2>JJK GIFTING ON - PHASE-2</h2>
+        </div>
+        <div class="product-selection">
+            <div class="product-card" onclick="selectProduct(this)">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/YbcwXR3/gojo.jpg" alt="Product Image">
+                    <div class="product-info">
+                        <p>Satoru Gojo</p> <p>XAVIER</p>
+                        <p>INR 3500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" onclick="selectProduct(this)">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/xmc6hby/itadori.jpg" alt="Product Image">
+                    <div class="product-info">
+                        <p>Yuji Itadori</p> <p>YIN</p>
+                        <p>INR 3500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" onclick="selectProduct(this)">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/SQ6XSB7/fuzi.jpg" alt="Product Image">
+                    <div class="product-info">
+                        <p>Megumi Fushiguro</p> <p>JULIAN</p>
+                        <p>INR 3500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" onclick="selectProduct(this)">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/6WYkHq6/nobara.jpg" alt="Product Image">
+                    <div class="product-info">
+                        <p>Nobara Kugisaki</p> <p>MELISSA</p>
+                        <p>INR 3500</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-title">
+            <img src="https://th.bing.com/th?id=OIP.QDT0BBYtna1tMdci6KyTvQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="Select Payment Icon" class="title-icon">
+            <h2>Select Payment Method</h2>
+        </div>
+        <div class="payment-selection">
+            <div class="payment-option" onclick="selectPayment(this)">
+                <img src="https://hubscredits.com/assets/images/method/1705176146_4b314268cc3218fd5099.png" alt="Google Pay">
+                <span>Google Pay</span>
+            </div>
+        </div>
+        <div class="payment-selection">
+            <div class="payment-option" onclick="selectPayment(this)">
+                <img src="https://i.ibb.co/KxNLWV9/download-1.jpg" alt="Google Pay">
+                <span>Paytm</span>
+            </div>
+        </div>
+        <div class="payment-selection">
+            <div class="payment-option" onclick="selectPayment(this)">
+                <img src="https://hubscredits.com/assets/images/method/1705176253_4b69045b0e446ecf320c.png" alt="Google Pay">
+                <span>PhonePe</span>
+            </div>
+        </div>
+        <div class="payment-selection">
+            <div class="payment-option" onclick="selectPayment(this)">
+                <img src="https://th.bing.com/th?id=OIP.qfJJ1njgKoWJQWt0mImfIgHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="Google Pay">
+                <span>Cash</span>
+            </div>
+        </div>
+        <div class="order-button-container">
+            <button onclick="orderNow()">ORDER NOW</button>
+        </div>
+    </div>
+
+    <script>
+        let selectedProduct = null;
+        let selectedPayment = null;
+
+        function selectProduct(element) {
+            if (selectedProduct) {
+                selectedProduct.classList.remove('selected');
+            }
+            selectedProduct = element;
+            element.classList.add('selected');
+        }
+
+        function selectPayment(element) {
+            if (selectedPayment) {
+                selectedPayment.classList.remove('selected');
+            }
+            selectedPayment = element;
+            element.classList.add('selected');
+        }
+
+        function orderNow() {
+            const userId = document.getElementById('userId').value;
+            const zoneId = document.getElementById('zoneId').value;
+
+            if (!userId || !zoneId || !selectedProduct || !selectedPayment) {
+                alert('Please fill in all fields and select a product and payment method.');
+                return;
+            }
+
+            const productInfo = selectedProduct.querySelector('.product-info').innerText;
+            const paymentMethod = selectedPayment.querySelector('span').innerText;
+
+            const message = `User ID: ${userId}\nZone ID: ${zoneId}\nProduct: ${productInfo}\nPayment Method: ${paymentMethod}`;
+            const whatsappUrl = `https://wa.me/8414075796?text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
